@@ -86,9 +86,9 @@ main img {
     }
   }
 
-animation: var(--animate-bounce); /* bounce 1s infinite */
+/* animation: var(--animate-bounce); bounce 1s infinite */
 
-@keyframes bounce {
+/* @keyframes bounce {
   0%, 100% {
     transform: translateY(-25%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
@@ -118,6 +118,6 @@ animation: var(--animate-bounce); /* bounce 1s infinite */
     left: 0;
     , transform: scaleX(-1);
   }
-}
+} */
 
 }

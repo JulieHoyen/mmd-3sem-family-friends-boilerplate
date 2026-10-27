@@ -11,8 +11,7 @@ const DetailView = async ({ params }) => {
   const { id } = await params;
 
   const response = await fetch(
-    `https://api.thedogapi.com/v1/breeds/${id}`,
-    {
+    `https://api.thedogapi.com/v1/breeds/${id}`,{
       headers: {
         "x-api-key": process.env.THEDOG_API_KEY,
       },
@@ -29,7 +28,6 @@ if (!response.ok) {
 }
 
 const breed = await response.json();
-
   return (
     <main className="flex flex-col">
       <Header />

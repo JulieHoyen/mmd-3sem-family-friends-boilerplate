@@ -10,6 +10,9 @@ const FavoriteButton = ({ isFavorite = false }) => {
   };
 
   return (
+
+
+    
     <button type="button" onClick={handleFavorite} aria-pressed={favorite} aria-label={favorite ? "Remove from favorites" : "Add to favorites"} className="rounded-full bg-white/30 p-2 text-white cursor-pointer">
       {favorite ? <FaStar /> : <FaRegStar />}
     </button>
