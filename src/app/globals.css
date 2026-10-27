@@ -85,4 +85,39 @@ main img {
       transform: rotate(4deg);
     }
   }
+
+animation: var(--animate-bounce); /* bounce 1s infinite */
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+
+#pot {
+  bottom: 15%;
+  position: absolute;
+  animation: linear infinite alternate;
+  animation-name: run;
+  animation-duration: 5s;
+}
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    left: 0;
+    , transform: scaleX(-1);
+  }
+}
+
 }

@@ -48,7 +48,7 @@ const breed = await response.json();
 
 </Link>
           <div className="absolute top-4 right-4">
-            <FavoriteButton isFavorite={breed.isFavorite} />
+            <FavoriteButton id={id} isFavorite={breed.isFavorite} />
           </div>
         </div>
 

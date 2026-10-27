@@ -13,7 +13,7 @@ const BreedCard = ({ id, image, name, origin, isFavorite = false }) => {
 
 
         <div className="absolute top-2 right-2">
-          <FavoriteButton isFavorite={isFavorite} />
+          <FavoriteButton id={id} isFavorite={isFavorite} />
         </div>
       </div>
 
