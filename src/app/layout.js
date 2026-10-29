@@ -13,16 +13,12 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Family Friends",
-  description:
-    "Browse a list of breeds, view pictures, and learn about each dog’s size, personality, activity level, and care needs.",
+  description: "Browse a list of breeds, view pictures, and learn about each dog’s size, personality, activity level, and care needs.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

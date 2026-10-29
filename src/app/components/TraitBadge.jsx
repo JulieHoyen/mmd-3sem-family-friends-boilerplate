@@ -1,9 +1,9 @@
       
-      import { FiSearch } from "react-icons/fi";
+  
      const temperament = "Independent, dignified, aloof, loyal, confident";
 const traits = temperament.split(",").map((trait) => trait.trim());
 
-console.log(traits);
+
 
 const TraitBadge = ({ temperament }) => {
 

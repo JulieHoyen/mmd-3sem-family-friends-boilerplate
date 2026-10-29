@@ -1,0 +1,56 @@
+import Link from "next/link";
+import Image from "next/image";
+import FavoritElement from "./FavoritElement";
+import { headers } from "next/headers";
+
+const BreedList = ({ searchParams }) => {
+  return <FetchBreeds searchParams={searchParams} />;
+};
+
+const FetchBreeds = async ({ searchParams }) => {
+  "use server";
+  const { query, id } = await searchParams;
+  const url = query ? `https://api.thedogapi.com/v1/breeds/search?q=${query}` : "https://api.thedogapi.com/v1/breeds";
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "x-api-key": process.env.API_KEY,
+      },
+    });
+
+    const [breedResponse, favoriteResponse] = await Promise.all([
+      fetch(url, {
+        headers: {
+          "x-api-key": process.env.THEDOG_API_KEY,
+        },
+      }),
+      fetch("https://api.thedogapi.com/v1/favourites", {
+        headers: {
+          "x-api-key": process.env.THEDOG_API_KEY,
+        },
+        cache: "no-store",
+      }),
+    ]);
+
+    const [breeds, favorites] = await Promise.all([breedResponse.json(), favoriteResponse.json()]);
+
+    return breeds.map((breed) => {
+      const isFavorite = favorites.some((favorite) => favorite.image_id === breed.image?.id);
+
+      return (
+        <div key={breed.id} className="relative">
+          <FavoritElement id={breed.image?.id} breed={breed.name} isFavorite={isFavorite} />
+
+          <Link href={`/details/${breed.id}`}>
+            <Image loading="eager" alt={breed.name ? breed.name : "Image of dog"} src={breed.image.url} width={300} height={200} className="w-full h-[200] object-cover rounded-2xl" />
+            <div className="text-center">{breed.name}</div>
+          </Link>
+        </div>
+      );
+    });
+  } catch (error) {
+    return <p>Ingen internet forbindelse eller API utilgængeligt</p>;
+  }
+};
+
+export default BreedList;
